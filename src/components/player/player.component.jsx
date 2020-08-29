@@ -1,7 +1,21 @@
 import React from 'react';
 
-const Player = () => {
-   return <h1>Welcome To Spotify</h1>;
+import Sidebar from '../sidebar/sidebar.component';
+import Body from '../body/body.component';
+import Footer from '../footer/footer.component';
+
+import { Wrapper, Main } from './player.styles';
+
+const Player = ({ spotify }) => {
+   return (
+      <Wrapper>
+         <Main>
+            <Sidebar />
+            <Body />
+         </Main>
+         <Footer></Footer>
+      </Wrapper>
+   );
 };
 
 export default Player;
