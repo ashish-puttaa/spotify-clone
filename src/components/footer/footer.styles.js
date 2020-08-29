@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Left = styled.div`
-   flex: 0.3;
+   flex: 0.2;
    display: flex;
    align-items: center;
    color: white;
@@ -21,7 +21,7 @@ export const Left = styled.div`
 `;
 
 export const Center = styled.div`
-   flex: 0.4;
+   flex: 0.6;
    padding: 0 100px;
    color: white;
    display: flex;
@@ -30,8 +30,6 @@ export const Center = styled.div`
    max-width: 300px;
 
    .icon {
-      cursor: pointer;
-
       &:hover {
          transition: transform 0.2s ease-in-out;
          transform: scale(1.2);
@@ -44,7 +42,7 @@ export const Center = styled.div`
 `;
 
 export const Right = styled.div`
-   flex: 0.3;
+   flex: 0.2;
    display: flex;
    align-items: center;
    justify-content: space-between;

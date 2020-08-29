@@ -16,10 +16,13 @@ function Footer() {
    return (
       <Wrapper>
          <Left>
-            <AlbumCover src="" alt="" />
+            <AlbumCover
+               src="https://upload.wikimedia.org/wikipedia/en/c/cb/Tom_Waits_-_Closing_Time.jpg"
+               alt=""
+            />
             <SongInfo>
-               <SongTitle>Yeah!</SongTitle>
-               <SongArtist>Usher</SongArtist>
+               <SongTitle>Martha</SongTitle>
+               <SongArtist>Tom Waits</SongArtist>
             </SongInfo>
          </Left>
          <Center>

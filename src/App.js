@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
 
 import Login from './components/login/login.component';
@@ -14,22 +14,25 @@ function App() {
    const [{ user, token }, dispatch] = useProviderState();
 
    useEffect(() => {
-      const hash = getTokenFromUrl();
-      window.location.hash = '';
-      const _token = hash.access_token;
+      (async () => {
+         const hash = getTokenFromUrl();
+         window.location.hash = '';
+         const _token = hash.access_token;
 
-      if (_token) {
-         dispatch({ type: 'SET_TOKEN', payload: _token });
-         spotify.setAccessToken(_token);
+         if (_token) {
+            dispatch({ type: 'SET_TOKEN', payload: _token });
+            spotify.setAccessToken(_token);
 
-         spotify.getMe().then((user) => {
-            dispatch({ type: 'SET_USER', payload: user });
-         });
+            const userData = await spotify.getMe();
+            dispatch({ type: 'SET_USER', payload: userData });
 
-         spotify
-            .getUserPlaylists()
-            .then((playlists) => dispatch({ type: 'SET_PLAYLISTS', payload: playlists }));
-      }
+            const playlists = await spotify.getUserPlaylists();
+            dispatch({ type: 'SET_PLAYLISTS', payload: playlists });
+
+            const playlist = await spotify.getPlaylist('37i9dQZF1DWSqmBTGDYngZ');
+            dispatch({ type: 'SET_DISCOVER_WEEKLY', payload: playlist });
+         }
+      })();
    }, []);
 
    return <div className="App">{token ? <Player spotify={spotify} /> : <Login />}</div>;

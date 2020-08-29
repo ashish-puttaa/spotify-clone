@@ -28,8 +28,8 @@ function Sidebar() {
          <SidebarOption title="Rock" />
          <SidebarOption title="RnB" />
 
-         {playlists?.items?.map((playlist) => (
-            <SidebarOption title={playlist.name} />
+         {playlists?.items?.map((item) => (
+            <SidebarOption key={item.id} title={item.name} />
          ))}
       </Wrapper>
    );
